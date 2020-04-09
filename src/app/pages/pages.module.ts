@@ -14,12 +14,15 @@ import { ProgressComponent } from './progress/progress.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 
+import { PipesModule } from './../pipes/pipes.module';
+
 // TODO mudar a modulo de componentes
 import { IncrementorComponent } from '../components/incremetor/incrementor.component';
 import { DoughnutChartComponent } from '../components/doughnut-chart/doughnut-chart.component';
 
 import { PromisesComponent } from './promises/promises.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -31,14 +34,16 @@ import { RxjsComponent } from './rxjs/rxjs.component';
     DoughnutChartComponent,
     AccountSettingsComponent,
     PromisesComponent,
-    RxjsComponent
+    RxjsComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     PAGES_ROUTES,
     FormsModule,
-    ChartsModule
+    ChartsModule,
+    PipesModule
   ],
   exports: [
     PagesComponent,

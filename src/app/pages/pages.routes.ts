@@ -1,3 +1,4 @@
+import { ProfileComponent } from './profile/profile.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { PromisesComponent } from './promises/promises.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
@@ -18,6 +19,7 @@ const pagesRoutes: Routes = [
       { path: 'progress', component: ProgressComponent, data: { title: 'Progress' } },
       { path: 'graph1', component: Graph1Component, data: { title: 'Gráficas' } },
       { path: 'account-settings', component: AccountSettingsComponent, data: { title: 'Ajustes' } },
+      { path: 'profile', component: ProfileComponent, data: { title: 'Peril de usuario' } },
       { path: 'promises', component: PromisesComponent, data: { title: 'Promesas' } },
       { path: 'rxjs', component: RxjsComponent, data: { title: 'Rxjs' } },
       { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
