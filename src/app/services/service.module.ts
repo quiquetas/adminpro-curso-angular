@@ -1,18 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { SettingsService, SharedService, SidebarService } from './service.index';
+import { HttpClientModule } from '@angular/common/http';
 
-// TODO no se está usando porque los servicios tienen provideIn: 'root'
+import {
+  LoginGuard,
+  SettingsService,
+  SharedService,
+  SidebarService,
+  UsuarioService
+} from './service.index';
+
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ],
   providers: [
+    LoginGuard,
     SettingsService,
     SharedService,
-    SidebarService
+    SidebarService,
+    UsuarioService
   ]
 })
 export class ServiceModule { }
