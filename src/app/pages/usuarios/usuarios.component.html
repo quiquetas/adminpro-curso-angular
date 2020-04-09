@@ -1,0 +1,57 @@
+<div class="card">
+    <div class="card-body">
+        <input #input type="text" class="form-control" placeholder="Buscar usuarios" (keyup)="buscarUsuarios(input.value)">
+    </div>
+</div>
+<div *ngIf="loading" class="alert alert-warning text-center">
+    <strong>Cargando</strong>
+    <br>
+    <i class="fa fa-refresh fa-spin fa-2x"></i>
+    <br>
+    <span>Espere por favor</span>
+</div>
+
+<div class="card" *ngIf="!loading">
+    <div class="card-body">
+        <h3 class="card-title">Usuarios registrados (<small>{{ totalRegistros }}</small>)</h3>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Imagen</th>
+                    <th>Email</th>
+                    <th>Nombre</th>
+                    <th>Rol</th>
+                    <th>Auth</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let usuario of usuarios">
+                    <td><img (click)="mostrarModal(usuario._id)" [src]="usuario.img | imagen" class="img-thumbnail img-circle" style="max-width: 50px"></td>
+                    <td>{{ usuario.nombre }}</td>
+                    <td>{{ usuario.email }}</td>
+                    <td>
+                        <select name="role" class="form-control" [(ngModel)]="usuario.role">
+                        <option value="ADMIN_ROLE">Admin</option>
+                        <option value="USER_ROLE">Usuario</option>
+                      </select>
+                    </td>
+                    <td>
+                        <label *ngIf="usuario.google" class="label label-danger">Google</label>
+                        <label *ngIf="!usuario.google" class="label label-info">Normal</label>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary" (click)="guardarUsuario(usuario)">
+                          <i class="fa fa-save"></i>
+                        </button>
+                        <button class="btn btn-danger" (click)="borrarUsuario(usuario)">
+                          <i class="fa fa-trash-o"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button (click)="cambiarDesde(-5)" class="btn btn-secondary">Anteriores</button>
+        <button (click)="cambiarDesde(5)" class="btn btn-secondary">Siguientes</button>
+    </div>
+</div>

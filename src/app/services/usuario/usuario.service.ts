@@ -96,7 +96,11 @@ export class UsuarioService {
   actualizarUsuario(usuario: Usuario) {
     return this.http.put(`${environment.apiUrl}/usuario/${usuario._id}?token=${this.token}`, usuario).pipe(
       map((resp: any) => {
-        this.guardarStorage(resp.usuario._id, this.token, resp.usuario);
+        // Si el usuario que se está actualizando es el usuario logueado, actualizo
+        // el local Storage.
+        if (usuario._id === this.usuario._id) {
+          this.guardarStorage(resp.usuario._id, this.token, resp.usuario);
+        }
 
         Swal.fire({ icon: 'success', title: 'Usuario actualizado'});
 
@@ -114,5 +118,19 @@ export class UsuarioService {
         Swal.fire({ icon: 'success', title: 'Imagen actualizada' });
       })
       .catch(console.log);
+  }
+
+  cargarUsuarios(desde: number = 0) {
+    return this.http.get(`${environment.apiUrl}/usuario?desde=${desde}`);
+  }
+
+  buscarUsuarios(termino: string) {
+    return this.http.get(`${environment.apiUrl}/busqueda/coleccion/usuarios/${termino}`).pipe(
+      map((resp: any) => resp.usuarios)
+    );
+  }
+
+  borrarUsuario(usuario: Usuario) {
+    return this.http.delete(`${environment.apiUrl}/usuario/${usuario._id}?token=${this.token}`);
   }
 }

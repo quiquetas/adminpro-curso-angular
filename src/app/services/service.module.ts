@@ -1,3 +1,4 @@
+import { ModalUploadService } from './../components/modal-upload/modal-upload.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -24,7 +25,8 @@ import {
     SharedService,
     SidebarService,
     UsuarioService,
-    SubirArchivoService
+    SubirArchivoService,
+    ModalUploadService
   ]
 })
 export class ServiceModule { }

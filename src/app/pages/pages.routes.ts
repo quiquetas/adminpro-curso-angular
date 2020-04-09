@@ -1,3 +1,4 @@
+import { UsuariosComponent } from './usuarios/usuarios.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { PromisesComponent } from './promises/promises.component';
@@ -22,6 +23,8 @@ const pagesRoutes: Routes = [
       { path: 'profile', component: ProfileComponent, data: { title: 'Peril de usuario' } },
       { path: 'promises', component: PromisesComponent, data: { title: 'Promesas' } },
       { path: 'rxjs', component: RxjsComponent, data: { title: 'Rxjs' } },
+      // Mantenimientos
+      { path: 'usuarios', component: UsuariosComponent, data: { title: 'Mantenimiento de usuarios' } },
       { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
     ]
   }
