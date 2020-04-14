@@ -1,3 +1,4 @@
+import { Subscription } from 'rxjs';
 import { ModalUploadService } from './../../components/modal-upload/modal-upload.service';
 import { UsuarioService } from './../../services/service.index';
 import { Usuario } from './../../models/usuario.model';
@@ -18,6 +19,8 @@ export class UsuariosComponent implements OnInit, OnDestroy {
   desde = 0;
   totalRegistros = 0;
 
+  notificationSubs: Subscription;
+
   constructor(
     public usuarioService: UsuarioService,
     public modalUploadService: ModalUploadService
@@ -26,11 +29,11 @@ export class UsuariosComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.cargarUsuarios();
 
-    this.modalUploadService.notificacion.subscribe(resp => this.cargarUsuarios());
+    this.notificationSubs = this.modalUploadService.notificacion.subscribe(resp => this.cargarUsuarios());
   }
 
   ngOnDestroy() {
-    this.modalUploadService.notificacion.unsubscribe();
+    this.notificationSubs.unsubscribe();
   }
 
   cargarUsuarios() {
