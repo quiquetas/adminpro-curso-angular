@@ -81,13 +81,7 @@ export class LoginComponent implements OnInit {
     const usuario = new Usuario(null, forma.value.email, forma.value.password);
 
     this.usuarioService.login(usuario, forma.value.recordar).subscribe(
-      ok => this.router.navigate(['/dashboard']),
-      error => Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'Ocurrió un error al autenticar'
-      })
-    );
+      ok => this.router.navigate(['/dashboard']));
   }
 
 }
