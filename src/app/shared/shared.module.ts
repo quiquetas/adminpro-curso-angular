@@ -1,3 +1,4 @@
+import { ModalUploadComponent } from './../components/modal-upload/modal-upload.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -14,7 +15,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     HeaderComponent,
     SidebarComponent,
     BreadcrumbsComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    ModalUploadComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     HeaderComponent,
     SidebarComponent,
     BreadcrumbsComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    ModalUploadComponent
   ]
 })
 export class SharedModule { }

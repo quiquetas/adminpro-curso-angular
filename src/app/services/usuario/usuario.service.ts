@@ -61,6 +61,21 @@ export class UsuarioService {
     );
   }
 
+  renuevaToken() {
+    return this.http.get(`${environment.apiUrl}/login/renuevatoken?token=${this.token}`).pipe(
+      map((resp: any) => {
+        this.guardarStorage(this.usuario._id, resp.token, this.usuario, this.menu);
+        console.log('Token renovado');
+        return true;
+      }),
+      catchError((err: any) => {
+        Swal.fire('Sesión expirada', 'Debe ingresar nuevamente', 'error');
+        this.router.navigate(['/login']);
+        return Observable.throw(err);
+      })
+    );
+  }
+
   logout() {
     this.usuario = null;
     this.token = null;
